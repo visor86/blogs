@@ -1,0 +1,220 @@
+@import "_common/reset";
+@import "_common/grid";
+
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,700&subset=latin,cyrillic);
+
+* {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 14px;
+}
+
+a {
+    color: #2b94e1;
+    text-decoration: none;
+
+    :hover {
+        text-decoration: underline;
+    }
+}
+
+.hidden{
+    opacity:0;
+}
+
+.visible{
+    opacity:1;
+}
+
+header {
+    height: 35px;
+    background: #222222;
+    padding-top: 15px;
+    color: #fff;
+
+    .rss {
+        img {
+            margin-right: 5px;
+        }
+        
+        a {
+            color: #fff;
+            font-size: 14px;
+            text-decoration: none;
+        }
+    }
+    margin-bottom: 67px;
+}
+
+footer {
+    background: #222222;
+    height: 55px;
+    padding-top: 30px;
+    position: relative;
+
+    .footer-logo {
+        float: left;
+        margin-right: 25px;
+    }
+
+    .footer-copy {
+        padding-top: 5px;
+        color: #999999;
+        font-size: 11px;
+        line-height: 12px;
+    }
+}
+
+.main {
+    min-height: 100%;
+
+
+    h1 {
+        font-size: 36px;
+        font-weight: bold;
+    }
+
+    .content {
+        margin-top: 30px;
+
+        article.post {
+            padding-bottom: 30px;
+            border-bottom: solid 1px #adbabe;
+            padding-top: 25px;
+
+            time {
+                font-size: 12px;
+                color: #91adb5;
+            }
+
+            h2 {
+                font-size: 18px;
+                font-weight: bold;
+                color: #000;
+                margin: 20px 0;
+
+                a {
+                    font-size: 18px;
+                    font-weight: bold;
+                    color: #000;
+
+                    &:hover {
+                        color: #2b94e1;
+                    }
+                }
+
+                span {
+                    color: #98aaaf;
+                    font-size: 12px;
+                    font-weight: normal;
+                    padding-left: 5px;
+                }
+            }
+
+            .post-text {
+                font-size: 14px;
+                line-height: 22px;
+                color: #4e4e4e;
+            }
+
+            .images {
+                text-align: center;
+                width: 243px;
+                height: 139px;
+                overflow: hidden;
+            }
+        }
+    }
+
+    .pages {
+        margin: 35px 0;
+
+        ul {
+            list-style: none;
+
+            li {
+                display: inline-block;
+                margin-right: 5px;
+
+                a {
+                    display: inline-block;
+                    background: #f5f5f5;
+                    padding: 6px 10px;
+                    color: #2b94e1;
+                }
+
+                &.active {
+
+                    span {
+                        display: inline-block;
+                        padding: 6px 10px;
+                        background: #2b94e1;
+                        color: #fff;
+                    }
+                }
+            }
+        }
+    }
+
+    .detail {
+        margin-top: 35px;
+
+        .mask {
+            width: 33px;
+            height: 33px;
+            border: #eee;
+            border-radius: 17px;
+            overflow: hidden;
+            float: left;
+            margin-right: 7px;
+        }
+
+        .fname {
+            line-height: 33px;
+            font-weight: 700;
+            float: left;
+            margin-right: 20px;
+        }
+
+        time {
+            line-height: 33px;
+            font-size: 12px;
+            color: #91adb5;
+        }
+
+        .meta {
+            margin-bottom: 35px;
+        }
+
+        .image-detail {
+            margin-bottom: 35px;
+
+            .images {
+                text-align: center;
+                width: 780px;
+                height: 449px;
+                overflow: hidden;
+            }
+        }
+
+        .back {
+            margin: 35px 0;
+        }
+
+        .text {
+            p {
+                font-size: 14px;
+                line-height: 25px;
+                margin: 20px 0;
+            }
+
+            ul {
+                list-style: disc;
+                margin-left: 23px;
+
+                li {
+                    padding: 10px 0 10px 10px;
+                }
+            }
+        }
+    }
+}
