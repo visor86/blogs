@@ -932,9 +932,10 @@ footer .footer-copy {
 }
 .main .detail .image-detail .images {
   text-align: center;
-  width: 780px;
-  height: 449px;
   overflow: hidden;
+}
+.main .detail .image-detail .images img {
+  width: 100%;
 }
 .main .detail .back {
   margin: 35px 0;
