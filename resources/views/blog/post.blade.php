@@ -16,7 +16,7 @@
                 </div>
                 @if ($post->images)
                 <div class="image-detail">
-                    <div clas="images">
+                    <div class="images">
                         <img src="{{ page_image($post->images) }}" alt="">
                     </div>
                 </div>
