@@ -15,6 +15,7 @@
 })(jQuery);
 
 $(function(){
+    $('.post').addClass('hidden').isVisible();
     $(window).scroll(function() {
         $('.post').addClass('hidden').isVisible();
     });
