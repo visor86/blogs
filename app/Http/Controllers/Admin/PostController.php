@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Jobs\PostFormFields;
 use App\Http\Requests\PostRequest;
 use App\Http\Controllers\Controller;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 use App\Post;
 use Storage;
 
@@ -65,9 +66,12 @@ class PostController extends Controller
      */
     public function edit($id)
     {
-        $data = $this->dispatch(new PostFormFields($id));
-
-        return view('admin.post.edit', $data);
+        try{
+            $data = $this->dispatch(new PostFormFields($id));
+            return view('admin.post.edit', $data);
+        } catch (ModelNotFoundException $e) {
+            return abort(404);
+        }
     }
 
     /**
