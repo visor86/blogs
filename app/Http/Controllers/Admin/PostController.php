@@ -3,15 +3,19 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Jobs\PostFormFields;
-use App\Http\Requests;
-use App\Http\Requests\PostCreateRequest;
-use App\Http\Requests\PostUpdateRequest;
+use App\Http\Requests\PostRequest;
 use App\Http\Controllers\Controller;
 use App\Post;
 use Storage;
 
 class PostController extends Controller
 {
+
+    public function __construct() 
+    {
+        $this->middleware('validator:\App\Post', ['only' => ['store', 'update']]);
+    }
+
     /**
      * Display a listing of the posts.
      */
@@ -34,11 +38,11 @@ class PostController extends Controller
     /**
      * Store a newly created Post
      *
-     * @param PostCreateRequest $request
+     * @param Request $request
      */
-    public function store(PostCreateRequest $request)
+    public function store(PostRequest $request)
     {
-        $post = Post::create($request->postFillData());
+        $post = Post::create($request->postFillData(Post::class));
         if ($request->hasFile('images')) {
             $post->images = $this->uploadImage($request);
             $post->save();
@@ -64,14 +68,14 @@ class PostController extends Controller
     /**
      * Update the Post
      *
-     * @param PostUpdateRequest $request
+     * @param Request $request
      * @param int  $id
      */
-    public function update(PostUpdateRequest $request, $id)
+    public function update(PostRequest $request, $id)
     {
         $post = Post::findOrFail($id);
         $images = $post->images;
-        $post->fill($request->postFillData());
+        $post->fill($request->postFillData(Post::class));
 
         if ($request->hasFile('images')) {
             // delete file

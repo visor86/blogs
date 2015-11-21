@@ -3,9 +3,13 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use \App\Http\Requests\RequestTrait;
+use \App\Http\Requests\PostRequest;
 
 class Post extends Model
 {
+
+    use RequestTrait;
     /**
      * The table associated with the model.
      *
@@ -20,12 +24,47 @@ class Post extends Model
         'enabled', 'date_from', 'text'
     ];
 
+
+    /**
+     * Get the validation rules that apply to the request.
+     *
+     * @return array
+     */
+    public function rules(\Illuminate\Http\Request $request)
+    {
+        return [
+            'title'     => 'required',
+            'subtitle'  => 'required',
+            'preview'   => 'required',
+            'text'      => 'required',
+            'date_from' => 'required'
+        ];
+    }
+
+    /**
+     * Return the fields and values
+     */
+    public function modifyInput(PostRequest $request)
+    {
+        return [
+            'title'             => $request->title,
+            'subtitle'          => $request->subtitle,
+            'images'            => $request->images,
+            'text'              => $request->get('text'),
+            'preview'           => $request->preview,
+            'meta_description'  => $request->meta_description,
+            'meta_keywords'     => $request->meta_keywords,
+            'enabled'           => (bool)$request->enabled,
+            'date_from'         => $request->date_from,
+        ];
+    }
+
     public function setTitleAttribute($value)
     {
         $this->attributes['title'] = $value;
 
         if (! $this->exists) {
-            $this->attributes['slug'] = str_slug($value);
+            $this->setUniqueSlug($value, '');
         }
     }
 
