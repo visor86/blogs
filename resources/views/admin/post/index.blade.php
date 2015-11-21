@@ -7,9 +7,11 @@
                 <h3>Posts <small>» Listing</small></h3>
             </div>
             <div class="col-md-6 text-right">
+                @can ('post-create')
                 <a href="/admin/post/create" class="btn btn-success btn-md">
                     <i class="fa fa-plus-circle"></i> New Post
                 </a>
+                @endcan
             </div>
         </div>
 

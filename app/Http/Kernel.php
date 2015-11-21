@@ -30,6 +30,7 @@ class Kernel extends HttpKernel
         'auth' => \App\Http\Middleware\Authenticate::class,
         'auth.basic' => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
         'guest' => \App\Http\Middleware\RedirectIfAuthenticated::class,
-        'validator' => \App\Http\Middleware\InputValidator::class
+        'validator' => \App\Http\Middleware\InputValidator::class,
+        'acl' => \App\Http\Middleware\CheckPermission::class
     ];
 }

@@ -14,6 +14,11 @@ class PostController extends Controller
     public function __construct() 
     {
         $this->middleware('validator:\App\Post', ['only' => ['store', 'update']]);
+        
+        $this->middleware('acl:post-show',   ['only' => ['index', 'show']]);
+        $this->middleware('acl:post-delete', ['only' => ['destroy']]);
+        $this->middleware('acl:post-create', ['only' => ['create', 'store']]);
+        $this->middleware('acl:post-edit',   ['only' => ['edit', 'update']]);
     }
 
     /**
